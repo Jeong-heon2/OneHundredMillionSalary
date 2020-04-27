@@ -1,10 +1,10 @@
 # Java 질문
 
-기본적으로는 [신입 개발자 면접 질문 시리즈]에서 답변을 가지고 왔습니다.
+기본적으로는 [신입 개발자 면접 질문 시리즈](https://www.notion.so/54d624628a634c879cc93d94f54cd2d1)에서 답변을 가지고 왔습니다.
 
 ### JVM구조에 대해 설명하시오.
 
-JVM(Java Virtual Machine). 자바 가상 머신으로 자바 바이트 코드를 실행할 수 있는 주체다. CPU나 운영체제(플랫폼)의 종류와 무관하게 실행이 가능하다.즉, 운영체제 위에서 동작하는 프로세스로 자바 코드를 컴파일해서 얻은 바이트 코드를 해당 운영체제가 이해할 수 있는 기계어로 바꿔 실행시켜주는 역할을 한다.
+[JVM(Java Virtual Machine)](https://jeong-pro.tistory.com/148). 자바 가상 머신으로 자바 바이트 코드를 실행할 수 있는 주체다. CPU나 운영체제(플랫폼)의 종류와 무관하게 실행이 가능하다.즉, 운영체제 위에서 동작하는 프로세스로 자바 코드를 컴파일해서 얻은 바이트 코드를 해당 운영체제가 이해할 수 있는 기계어로 바꿔 실행시켜주는 역할을 한다.
 
 JVM의 구성을 살펴보면 크게 4가지(Class Loader, Execution Engine, Garbage Collector, Runtime Data Area)로 나뉜다.
 
@@ -29,7 +29,7 @@ JVM의 구성을 살펴보면 크게 4가지(Class Loader, Execution Engine, Gar
 
 ### static은 메모리 구조 중 어디에 올라가나요?
 
-메모리의 공간은 크게 Static(스태틱) 영역, Stack(스택) 영역, Heap(힙) 영역으로 구분되고 데이터타입(자료형)에 따라서 해당 공간에 할당된다.
+[메모리의 공간](https://blog.naver.com/heartflow89/220954420688)은 크게 Static(스태틱) 영역, Stack(스택) 영역, Heap(힙) 영역으로 구분되고 데이터타입(자료형)에 따라서 해당 공간에 할당된다.
 
 하나의 JAVA 파일은 크게 필드(field), 생성자(constructor), 메소드(method)로 구성된다. 그중 필드 부분에서 선언된 변수(전역변수)와 정적 멤버변수(static이 붙은 자료형) Static 영역에 데이터를 저장한다. Static 영역의 데이터는 프로그램의 시작부터 종료가 될 때까지 메모리에 남아있게 된다. 다르게 말하면 전역변수가 프로그램이 종료될 때까지 어디서든 사용이 가능한 이유이기도 하다. 따라서 전역변수를 무분별하게 많이 사용하다 보면 메모리가 부족할 우려가 있어 필요한 변수만 사용할 필요가 있다.
 > 추가자료 : https://siyoon210.tistory.com/124
@@ -58,7 +58,7 @@ https://d2.naver.com/helloworld/1329 (좋은 자료. 굳굳)
 <br>
 
 ### Synchronize에 대해 설명하시오. Synchronize를 하기 위한 방법은 무엇이 있나요?
-멀티쓰레드를 사용하는 이유가 무엇일까? CPU가 놀고 있을 때 다른 쓰레드가 CPU를 점유한다면 CPU는 더 이상 놀지 않게 된다. 이렇게 CPU의 병목을 줄이다보면 성능을 개선할 수 있다. 또한 시분할 다중화를 통해 동시에 여러 작업이 처리되게 끔 보이게 할 때도 멀티쓰레드를 사용한다.
+[멀티쓰레드](https://perfectacle.github.io/2019/03/10/java-synchronized-note/)를 사용하는 이유가 무엇일까? CPU가 놀고 있을 때 다른 쓰레드가 CPU를 점유한다면 CPU는 더 이상 놀지 않게 된다. 이렇게 CPU의 병목을 줄이다보면 성능을 개선할 수 있다. 또한 시분할 다중화를 통해 동시에 여러 작업이 처리되게 끔 보이게 할 때도 멀티쓰레드를 사용한다.
 
 쓰레드는 프로세스 내부에 존재하기 때문에 프로세스 내부의 자원을 공유한다. 따라서 공유 자원에 대해서 동기화 이슈가 매우 중요하다. A 쓰레드의 작업이 완전히 끝나기 전에 A’라는 자원이 다른 쓰레드에 의해 값이 바뀌게 되면 A 쓰레드는 원하는 값을 얻어낼 수 없다.
 
@@ -73,14 +73,18 @@ CPU에서 명령을 수행하기 위해서는 메모리에 있는 데이터를 C
 > 사용방법 : https://parkcheolu.tistory.com/15
 은행 시스템 예시 : https://velog.io/@zehye/%EC%93%B0%EB%A0%88%EB%93%9CThreads%EC%99%80-%EB%8F%99%EA%B8%B0%ED%99%94Synchronization
 
+<br>
+
 ### Collection Framework 설명
-다수의 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스의 집합을 의미합니다. 즉, 데이터를 저장하는 자료 구조와 데이터를 처리하는 알고리즘을 구조화하여 클래스로 구현해 놓은 것입니다. 이러한 컬렉션 프레임워크는 자바의 인터페이스(interface)를 사용하여 구현됩니다.
+다수의 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 [클래스의 집합](http://tcpschool.com/java/java_collectionFramework_concept)을 의미합니다. 즉, 데이터를 저장하는 자료 구조와 데이터를 처리하는 알고리즘을 구조화하여 클래스로 구현해 놓은 것입니다. 이러한 컬렉션 프레임워크는 자바의 인터페이스(interface)를 사용하여 구현됩니다.
 
 1. List 인터페이스
 2. Set 인터페이스
 3. Map 인터페이스
 
 이 중에서 List와 Set 인터페이스는 모두 Collection 인터페이스를 상속받지만, 구조상의 차이로 인해 Map 인터페이스는 별도로 정의됩니다. 따라서 List 인터페이스와 Set 인터페이스의 공통된 부분을 Collection 인터페이스에서 정의하고 있습니다.
+
+<br>
 
 ### List vs Set vs Map 차이점 설명
 1. List
@@ -94,14 +98,16 @@ CPU에서 명령을 수행하기 위해서는 메모리에 있는 데이터를 C
    2. 이때 키는 중복을 허용하지 않지만, 값은 중복될 수 있음.
    3. HashMap, TreeMap, Hashtable, Properties
 
+<br>
+
 ### Vector와 List 차이에 대해 설명하시오.
 
-Vector
-일반적인 배열처럼 개체들을 연속적인 메모리 공간에 저장한다. 즉, iterator 뿐 아니라 position index(operator [])로도 접근이 가능하다는 것이다.
-동적으로 확장/축소가 가능한 동적 배열(dynamic array)로 구현되어 있다.
-List
-double linked list로 구현되어 있다.
-노드가 양 쪽으로 모두 연결 되어 있으며 삽입/삭제가 자주 발생하는 경우에 용이하다.
+- Vector
+  - 일반적인 배열처럼 개체들을 연속적인 메모리 공간에 저장한다. 즉, iterator 뿐 아니라 position index(operator [])로도 접근이 가능하다는 것이다.
+  - 동적으로 확장/축소가 가능한 동적 배열(dynamic array)로 구현되어 있다.
+- List
+  - double linked list로 구현되어 있다.
+  - 노드가 양 쪽으로 모두 연결 되어 있으며 삽입/삭제가 자주 발생하는 경우에 용이하다.
 
 |   | 장점  | 단점 |
 | :--------: |:---------------| :----- |
@@ -110,13 +116,16 @@ double linked list로 구현되어 있다.
 
 > 자료출저 : https://jaehogame.tistory.com/entry/STL-Vector%EC%99%80-List-%EC%B0%A8%EC%9D%B4%EC%A0%90
 
+<br>
+
 ### HashMap vs HashTable vs ConcurrentHashMap의 차이를 설명하시오.
-위에 나열된 클래스들은 Map 인터페이스를 구현한 콜렉션들입니다. 기본적으로 Map 인터페이스를 구축한다면 <key, value>구조를 가지게 됩니다. 하나씩 살펴봅시다. (위 링크에 코드도 참고하면 좋다.)
-Hashtable
-put, get과 같은 주요 메소드에 synchronized 키워드가 선언 되어 있습니다. 또한 key, value에 null을 허용하지 않습니다.
-HashMap
-주요 메소드에 synchronized 키워드가 없습니다. 또한 Hashtable과 다르게 key, value에 null을 입력할 수 있습니다.
-ConcurrentHashMap
-HashMap을 thread-safe 하도록 만든 클래스가 ConcurrentHashMap입니다. 하지만 HashMap과는 다르게 key, value에 null을 허용하지 않습니다. 또한 putIfAbsent라는 메소드를 가지고 있습니다.
+위에 나열된 클래스들은 [Map 인터페이스](https://jdm.kr/blog/197)를 구현한 콜렉션들입니다. 기본적으로 Map 인터페이스를 구축한다면 <key, value>구조를 가지게 됩니다. 하나씩 살펴봅시다. (위 링크에 코드도 참고하면 좋다.)
+- Hashtable
+  - put, get과 같은 주요 메소드에 synchronized 키워드가 선언 되어 있습니다. 또한 key, value에 null을 허용하지 않습니다.
+- HashMap
+  - 주요 메소드에 synchronized 키워드가 없습니다. 또한 Hashtable과 다르게 key, value에 null을 입력할 수 있습니다.
+- ConcurrentHashMap
+  - HashMap을 thread-safe 하도록 만든 클래스가 ConcurrentHashMap입니다. 하지만 HashMap과는 다르게 key, value에 null을 허용하지 않습니다. 또한 putIfAbsent라는 메소드를 가지고 있습니다.
+
 > 해시 충돌 : https://d2.naver.com/helloworld/831311
-<br>퍼포먼스 차이 : https://www.nagarro.com/en/blog/post/24/performance-improvement-for-hashmap-in-java-8
+퍼포먼스 차이 : https://www.nagarro.com/en/blog/post/24/performance-improvement-for-hashmap-in-java-8
