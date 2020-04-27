@@ -49,14 +49,14 @@ Intent는 메시징 객체로, 다른 앱 구성 요소로부터 작업을 요�
   - 특정 컴포넌트에서 암시적 인텐트를 받기 위해서는 매니페스트 파일에서 요소와 함께 어플리케이션 컴포넌트 각각에 대해서 하나 이상의 IntentFilter를 선언해야한다. 각각의 컴포넌트는 action, data, category를 기반으로 해서 자신이 받길 원하는 인텐트의 유형을 명시해야한다.
   - 암시적 인텐트를 사용하는 대표적인 경우로 문서 편집기를 들 수 있다. 카카오톡으로 PDF 파일을 받아서 열기를 클릭하면 PDF를 편집하거나 보여줄 수 있는 많은 애플리케이션들이 자기가 그 PDF 파일을 열겠다고 손을 든다. 그러면 안드로이드 시스템에서는 PDF를 열 수 있는 애플리케이션을 선택하는 위젯을 띄워준다.
 
-<br>
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/2_Android/image_intent.png?raw=true)
 
 암시적 인텐트가 시스템을 통해 전달되어 다른 액티비티를 시작하는 방법.
 1. 액티비티 A가 작업 설명이 있는 Intent를 생성하여 이를 startActivity()에 전달.
 2. Android 시스템이 모든 앱에서 해당 인텐트와 일치하는 인텐트 필터를 검색 일치하는 항목을 찾으면,
 3. 시스템이 해당 액티비티의 onCreate() 메서드를 호출하여 이를 Intent에 전달하고 , 일치하는 액티비티(Activity B)를 시작한다.
 
-암시적 인텐트는 보통 액션과 데이터라는 속성으로 구성되어있다. 액션은 수행할 기능이며, 데이터는 액션이 수행될 대상 데이터을 의미한다.
+암시적 인텐트는 보통 액션과 데이터라는 속성으로 구성되어있다. **액션**은 수행할 기능이며, **데이터**는 액션이 수행될 대상 데이터을 의미한다.
 
 ```
 var intent = Intent(Intent.ACTION_DIAL, Uri.parse(data))
@@ -64,7 +64,7 @@ var intent = Intent(Intent.ACTION_DIAL, Uri.parse(data))
 
 예를 들어, 위의 코드에서 액션은 ACTION_DIAL 즉, 전화를 걸라는 액션. 데이터는 Uri.parse(data), 즉 액션이 수행할 data , 전화번호가 된다. 따라서 Uri로 파싱한 전화번호 data를 대상으로 전화다이얼을 걸어라는 뜻이고 이 뜻을 인텐트에 담아 안드로이드 시스템에게 전달하면 된다.
 
-이 두가지 말고도 Category, Type, Component, Extras라는 속성을 가진다. 여기서 Component라는 속성을 지정할 경우 컴포넌트 클래스 이름을 명시적으로 지정하게 되는데 이 경우가 명시적 인텐트에 속하게 된다.
+이 두가지 말고도 Category, Type, Component, Extras라는 속성을 가진다. 여기서 Component라는 속성을 지정할 경우 컴포넌트 클래스 이름을 명시적으로 지정하게 되는데 이 경우가 **명시적 인텐트**에 속하게 된다.
 
 ###### IntentFilter
 앱이 수신할 수 있는 암시적 인텐트가 어느 것인지 알리려면, `<intent-filter>`요소를 사용하여 각 앱 구성 요소에 대해 하나 이상의 인텐트 필터를 매니페스트 파일에 선언한다. 각 인텐트 필터는 인텐트의 작업, 데이터 및 카테고리를 기반으로 하여 어느 유형의 인텐트를 수락하는지 지정한다. 시스템은 인텐트가 인텐트 필터 중 하나를 통과한 경우에만 암시적 인텐트를 앱 구성 요소에 전달한다.
@@ -176,6 +176,8 @@ Parcelable은 Reflection을 사용하지 않도록 설계되었다. Serializable
 
 ###### Serializable vs Parcelable
 
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/2_Android/image_Serializable.png?raw=true)
+
 실험 결과는 Parcelable이 Serializable 보다 10배 이상 빠르다는 것을 보여준다. 일부의 구글 엔지니어들도 이 결과에 대해 지지하고 있다.
 
 ***그러나!!*** Philipe Breault의 테스트 방법은 불공평하다고 주장하는 그룹이 있다.
@@ -219,12 +221,12 @@ https://github.com/GMLim/Android-Serialization-Test
 
 ### RecylcerView와  ListView의 차이에 대해 설명하시오
 
-참고링크 : ListView vs RecyclerView
+참고링크 : [ListView vs RecyclerView](https://woovictory.github.io/2019/01/03/Android-Diff-of-ListView-and-RecyclerView/)
 
 1. ListView(1.0 ~)
 2. RecyclerView(5.0 ~)
 3. 차이점
-
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/2_Android/image_RecylcerView.png?raw=true)
 
 * ViewHolder패턴을 사용한 ListView와 RecyclerView의 성능차이는 없다.
 * Adapter 클래스를 직접 구현하기 때문에 뷰 커스텀 작업이 유연하다.
@@ -233,16 +235,24 @@ https://github.com/GMLim/Android-Serialization-Test
 <br>
 
 ### ViewHolder 패턴에 대해 설명하시오
-ViewHolder란?
-ListView / RecyclerView 는 inflate를 최소화 하기 위해서 뷰를 재활용 하는데, 이 때 각 뷰의 내용을 업데이트 하려면 findViewById 를 매번 호출 해야한다. 이로 인해 성능저하가 일어남에 따라 ItemView의 각 요소를 바로 엑세스 할 수 있도록 저장해두고 사용하기 위한  각 뷰를 보관하는 Holder 객체이다
+
+[ViewHolder란?](https://developside.tistory.com/88)
+
+- ListView / RecyclerView 는 inflate를 최소화 하기 위해서 뷰를 재활용 하는데, 이 때 각 뷰의 내용을 업데이트 하려면 findViewById 를 매번 호출 해야한다. 이로 인해 성능저하가 일어남에 따라 ItemView의 각 요소를 바로 엑세스 할 수 있도록 저장해두고 사용하기 위한 **각 뷰를 보관하는 Holder 객체이다.**
+
 ※ inflate? : xml 로 쓰여있는 View의 정의를 실제 View 객체로 만드는 것을 말함.
-ViewHolder Pattern
+
+- ViewHolder Pattern
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/2_Android/image_ViewHolder.jpeg?raw=true)
 
 getTag(), setTag()로 뷰를 재사용하여, 데이터의 값(position)을 변경한다.
 
-ConstraintLayout을 사용해야 하는 이유가 무엇인가요?
-ConstraintLayout이란
-: ConstraintLayout은 복잡한 레이아웃을 단순한 계층 구조를 이용하여 표현할 수 있는 ViewGroup이다. 형제 View들과 관계를 정의해서 레이아웃을 구성한다는 점이 RelativeLayout과 비슷하지만, 보다 유연하고 다양한 기능을 제공한다. (ex. 두 View를 위 아래로 컨테이너 중앙에 배치하기등) 참고
-기존에 비해 어떤점이 더 좋은지
+<br>
+
+### ConstraintLayout을 사용해야 하는 이유가 무엇인가요?
+
+1. ConstraintLayout이란
+: ConstraintLayout은 복잡한 레이아웃을 단순한 계층 구조를 이용하여 표현할 수 있는 ViewGroup이다. 형제 View들과 관계를 정의해서 레이아웃을 구성한다는 점이 RelativeLayout과 비슷하지만, 보다 유연하고 다양한 기능을 제공한다. (ex. 두 View를 위 아래로 컨테이너 중앙에 배치하기등) [참고](https://beomseok95.tistory.com/305#ConstraintLayout%EC%9D%B4%EB%9E%80_)
+2. 기존에 비해 어떤점이 더 좋은지
 : RelativeLayout의 "상대적 위치 관계에 따른 배치" 특성에 LinearLayout의 "가중치(weight)가 가진 장점"을 적용하고, 체인(chain) 사용으로 다른 레이아웃 없이 "요소들을 그룹화"할 수 있다.
 : 뷰 계층을 간단하게 구성하여 유지보수가 용이하며 성능면에서 우수하다.
