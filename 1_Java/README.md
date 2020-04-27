@@ -25,6 +25,8 @@ JVM의 구성을 살펴보면 크게 4가지(Class Loader, Execution Engine, Gar
    1. JVM의 메모리 영역으로 자바 애플리케이션을 실행할 때 사용되는 데이터들을 적재하는 영역이다.
    2. 이 영역은 크게 Method Area, Heap Area, Stack Area, PC Register, Native Method Stack로 나눌 수 있다.
 
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/1_Java/image_jvm.png?raw=true)
+
 <br>
 
 ### static은 메모리 구조 중 어디에 올라가나요?
