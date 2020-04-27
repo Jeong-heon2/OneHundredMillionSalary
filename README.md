@@ -49,7 +49,7 @@ GC 작업을 하는 가비지 콜렉터는 다음과 같은 일을 한다.
 자바 기준으로 JVM은 메모리를 부여받고 프로그램을 실행하다가 메모리가 부족해지는 순간이 오면 추가적으로 메모리를 더 요청한다. 요청하는 바로 이때 가비지 컬렉터가 실행된다.
 
 > 추가자료 : https://mirinae312.github.io/develop/2018/06/04/jvm_gc.html (헌진이 설명에 보조 자료)
-<br>https://d2.naver.com/helloworld/1329 (좋은 자료. 굳굳)
+https://d2.naver.com/helloworld/1329 (좋은 자료. 굳굳)
 
 ### Synchronize에 대해 설명하시오. Synchronize를 하기 위한 방법은 무엇이 있나요?
 멀티쓰레드를 사용하는 이유가 무엇일까? CPU가 놀고 있을 때 다른 쓰레드가 CPU를 점유한다면 CPU는 더 이상 놀지 않게 된다. 이렇게 CPU의 병목을 줄이다보면 성능을 개선할 수 있다. 또한 시분할 다중화를 통해 동시에 여러 작업이 처리되게 끔 보이게 할 때도 멀티쓰레드를 사용한다.
@@ -65,54 +65,44 @@ CPU에서 명령을 수행하기 위해서는 메모리에 있는 데이터를 C
 여기서 synchronized 키워드가 가지는 진정한 의미가 나온다. synchronized 키워드를 사용한다는 것은 해당 블럭 내에 있는 공유 자원 A’가 쓰레드 로컬 변수에서 램으로 써지기 까지 다른 쓰레드는 대기(block)하라라는 의미를 가진다. 쓰레드 로컬 변수가 램에 써진 순간 다른 쓰레드가 램에서 해당 값을 가져와서 작업할 수 있게 된다.
 
 > 사용방법 : https://parkcheolu.tistory.com/15
-<br>은행 시스템 예시 : https://velog.io/@zehye/%EC%93%B0%EB%A0%88%EB%93%9CThreads%EC%99%80-%EB%8F%99%EA%B8%B0%ED%99%94Synchronization
+은행 시스템 예시 : https://velog.io/@zehye/%EC%93%B0%EB%A0%88%EB%93%9CThreads%EC%99%80-%EB%8F%99%EA%B8%B0%ED%99%94Synchronization
 
 ### Collection Framework 설명
 다수의 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스의 집합을 의미합니다. 즉, 데이터를 저장하는 자료 구조와 데이터를 처리하는 알고리즘을 구조화하여 클래스로 구현해 놓은 것입니다. 이러한 컬렉션 프레임워크는 자바의 인터페이스(interface)를 사용하여 구현됩니다.
 
-List 인터페이스
-Set 인터페이스
-Map 인터페이스
+1. List 인터페이스
+2. Set 인터페이스
+3. Map 인터페이스
 
 이 중에서 List와 Set 인터페이스는 모두 Collection 인터페이스를 상속받지만, 구조상의 차이로 인해 Map 인터페이스는 별도로 정의됩니다. 따라서 List 인터페이스와 Set 인터페이스의 공통된 부분을 Collection 인터페이스에서 정의하고 있습니다.
 
 ### List vs Set vs Map 차이점 설명
-List
-순서가 있는 데이터의 집합으로, 데이터의 중복을 허용함.
-Vector, ArrayList, LinkedList, Stack, Queue
-Set
-순서가 없는 데이터의 집합으로, 데이터의 중복을 허용하지 않음.
-HashSet, TreeSet
-Map
-키와 값의 한 쌍으로 이루어지는 데이터의 집합으로, 순서가 없음.
-이때 키는 중복을 허용하지 않지만, 값은 중복될 수 있음.
-HashMap, TreeMap, Hashtable, Properties
+1. List
+ 1. 순서가 있는 데이터의 집합으로, 데이터의 중복을 허용함.
+ 2. Vector, ArrayList, LinkedList, Stack, Queue
+2. Set
+ 1. 순서가 없는 데이터의 집합으로, 데이터의 중복을 허용하지 않음.
+ 2. HashSet, TreeSet
+3. Map
+ 1. 키와 값의 한 쌍으로 이루어지는 데이터의 집합으로, 순서가 없음.
+ 2. 이때 키는 중복을 허용하지 않지만, 값은 중복될 수 있음.
+ 3. HashMap, TreeMap, Hashtable, Properties
 
 ### Vector와 List 차이에 대해 설명하시오.
+
 Vector
 일반적인 배열처럼 개체들을 연속적인 메모리 공간에 저장한다. 즉, iterator 뿐 아니라 position index(operator [])로도 접근이 가능하다는 것이다.
 동적으로 확장/축소가 가능한 동적 배열(dynamic array)로 구현되어 있다.
 List
 double linked list로 구현되어 있다.
 노드가 양 쪽으로 모두 연결 되어 있으며 삽입/삭제가 자주 발생하는 경우에 용이하다.
-차이
-장점
-단점
-Vector
-개별 원소들 접근 가능
-원소를 마지막에 삽입 하는 것이 빠름
-랜덤으로 원소 순회가 가능
-개별 원소에 대한 접근 속도가 빠름
-컨테이너 끝이 아닌 곳에 삽입/제거시 성능이 현전히 떨어짐
-동적이라 확장/축소가 편하나 확장시 비용이 크다.
-List
-컨테이너 어느 위치에서라도 삽입/제거가 빠름
-원소들의 컨테이너 내 이동이 빠름
-원소의 인덱스로 직접 접근이 불가능함
-특정 원소에 접근하려면 처음이나 끝부터 선형 탐색을 해야함
-컨테이너 내 순회가 forward / reverse만 가능하여 느림
-원소간 상호 연결 정보를 위해 추가적 메모리 비용 발생
-자료출저 : https://jaehogame.tistory.com/entry/STL-Vector%EC%99%80-List-%EC%B0%A8%EC%9D%B4%EC%A0%90
+
+|   | 장점  | 단점 |
+| :--------: |:---------------| :----- |
+| Vector      | - 개별 원소들 접근 가능<br>- 원소를 마지막에 삽입 하는 것이 빠름<br>- 랜덤으로 원소 순회가 가능<br>- 개별 원소에 대한 접근 속도가 빠름 | - 컨테이너 끝이 아닌 곳에 삽입/제거시 성능이 현전히 떨어짐<br>- 동적이라 확장/축소가 편하나 확장시 비용이 크다. |
+| List | - 컨테이너 어느 위치에서라도 삽입/제거가 빠름<br>- 원소들의 컨테이너 내 이동이 빠름 | - 원소의 인덱스로 직접 접근이 불가능함<br>- 특정 원소에 접근하려면 처음이나 끝부터 선형 탐색을 해야함<br>- 컨테이너 내 순회가 forward / reverse만 가능하여 느림<br>- 원소간 상호 연결 정보를 위해 추가적 메모리 비용 발생 |
+
+> 자료출저 : https://jaehogame.tistory.com/entry/STL-Vector%EC%99%80-List-%EC%B0%A8%EC%9D%B4%EC%A0%90
 
 ### HashMap vs HashTable vs ConcurrentHashMap의 차이를 설명하시오.
 위에 나열된 클래스들은 Map 인터페이스를 구현한 콜렉션들입니다. 기본적으로 Map 인터페이스를 구축한다면 <key, value>구조를 가지게 됩니다. 하나씩 살펴봅시다. (위 링크에 코드도 참고하면 좋다.)
