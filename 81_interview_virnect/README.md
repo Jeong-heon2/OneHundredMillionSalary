@@ -140,6 +140,7 @@ Intent는 메시징 객체로, 다른 앱 구성 요소로부터 작업을 요�
 2. 일시정지됨 (Paused) : 액티비티가 일부가 가려진 상태, 이때는 액티비티가 완전히 살아 있지만(Activity 객체가 메모리에 보관되어 있고, 모든 상태 및 멤버 정보를 유지하며 창 관리자에 붙어 있는 상태로 유지), 메로리가 부족한 경우 시스템이 중단시킬 수도 있습니다.
 3. 정지됨(Stopped) : 액티비티가 다른 액티비티에 완전히 가려진 상태, 이때는 액티비티가 완전히 살아 있지만(Activity 객체가 메모리에 보관되어 있고, 모든 상태 및 멤버 정보를 유지하며 창 관리자에 붙어 있는 상태로 유지), 메로리가 부족한 경우 시스템이 중단시킬 수도 있습니다.
 
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/81_interview_virnect/image_v_1.png?raw=true)
 
 
 1. onCreate() : 액티비티를 생성, 액티비티의 필수 구성 요소를 초기화, setContentView()를 호출해서 액티비티에 UI를 정의할 수 있음
@@ -177,6 +178,8 @@ Intent는 메시징 객체로, 다른 앱 구성 요소로부터 작업을 요�
 왜 안드로이드는 메인 스레드에서만 UI 작업이 가능하도록 제한할까요? 메인 스레드가 아닌 스레드가 병렬적으로 실행되고 있을 때, 메인 스레드와 다른 스레드, 두 개 이상의 스레드가 동시에 같은 텍스트뷰에 setText()를 시도하는 경우를 생각하면 간단합니다. 둘 중 어느 스레드의 setText()가 적용될지 예측할 수 없고, 사용자는 둘 중 하나의 값만을 볼 수 있어 다른 한 스레드의 결과는 버려집니다. 이같이 **두 개 이상의 스레드를 사용할 때의 동기화 이슈를 차단하기 위해서 `Looper`와 `Handler`를 사용하게** 됩니다.
 
 메인 스레드는 내부적으로 Looper를 가지며 그 안에는 Message Queue가 포함됩니다. Message Queue는 스레드가 다른 스레드나 혹은 자기 자신으로부터 전달받은 Message를 기본적으로 선입선출 형식으로 보관하는 Queue입니다. **`Looper`는 Message Queue에서 Message나 Runnable 객체를 차례로 꺼내 Handler가 처리하도록 전달**합니다. **`Handler`는 Looper로부터 받은 Message를 실행, 처리하거나 다른 스레드로부터 메시지를 받아서 Message Queue에 넣는 역할을 하는 스레드 간의 통신 장치입니다.**
+
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/81_interview_virnect/image_v_2.png?raw=true)
 
 ##### Handler
 
@@ -341,6 +344,8 @@ CPU에서 명령을 수행하기 위해서는 메모리에 있는 데이터를 C
 <br>
 
 ### apply, with, let, also, run
+
+![](https://github.com/conquerex/OneHundredMillionSalary/blob/master/81_interview_virnect/image_v_3.png?raw=true)
 
 - apply
   - inline fun <T> T.apply(block: T.() -> Unit): T
